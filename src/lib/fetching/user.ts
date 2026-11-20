@@ -1,9 +1,5 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
-import {
-  queryOptions,
-  useMutation,
-  useQueryClient,
-} from '@tanstack/react-query'
+import { queryOptions, useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { supabase } from '@/lib/supabase/client'
 import type { UserProfile } from '@/lib/supabase/customTypes'
@@ -27,11 +23,7 @@ export const getUserProfile = async () => {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  const userProfile = await supabase
-    .from('users')
-    .select('*')
-    .match({ id: user?.id })
-    .single()
+  const userProfile = await supabase.from('users').select('*').match({ id: user?.id }).single()
 
   if (userProfile?.error) {
     throw userProfile.error
@@ -50,7 +42,7 @@ export const getUserProfileOptions = () => {
 
 export const getUserProfileByApiKey = async (
   apiKey: string,
-  supabaseClient: SupabaseClient<Database> = supabase
+  supabaseClient: SupabaseClient<Database> = supabase,
 ) => {
   const supabaseResponse = await supabaseClient
     .from('users')
@@ -99,23 +91,20 @@ export const updateUserMutation = () => {
 
       const previousProfile = queryClient.getQueryData(['userProfile'])
 
-      queryClient.setQueryData(
-        ['userProfile'],
-        (old: { data: UserProfile } | undefined) => {
-          if (!old?.data) {
-            return old
-          }
-
-          return {
-            ...old,
-            data: {
-              ...old.data,
-              [column]: value,
-              updated_at: new Date().toISOString(),
-            },
-          }
+      queryClient.setQueryData(['userProfile'], (old: { data: UserProfile } | undefined) => {
+        if (!old?.data) {
+          return old
         }
-      )
+
+        return {
+          ...old,
+          data: {
+            ...old.data,
+            [column]: value,
+            updated_at: new Date().toISOString(),
+          },
+        }
+      })
 
       return { previousProfile }
     },

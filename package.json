@@ -1,4 +1,21 @@
 {
+  "name": "react-supabase-starter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && tsc",
+    "cf-typegen": "wrangler types",
+    "deploy": "npm run build && wrangler deploy",
+    "dev": "vite --port 3450",
+    "format": "oxfmt",
+    "lint": "oxlint",
+    "lint:check": "oxlint --fix && oxfmt",
+    "lint:fix": "oxlint --fix",
+    "preview": "vite preview",
+    "supabase:types:app": "npx supabase gen types typescript --project-id \"jjrdjpcjzjdjlpmiodea\" > src/lib/supabase/supabase.ts",
+    "test": "vitest run",
+    "type-check": "tsc --noEmit"
+  },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
     "@fontsource-variable/inter": "^5.2.8",
@@ -47,22 +64,5 @@
     "vitest": "^4.0.16",
     "web-vitals": "^5.1.0",
     "wrangler": "^4.54.0"
-  },
-  "name": "react-supabase-starter",
-  "private": true,
-  "scripts": {
-    "build": "vite build && tsc",
-    "cf-typegen": "wrangler types",
-    "deploy": "npm run build && wrangler deploy",
-    "dev": "vite --port 3450",
-    "format": "oxfmt",
-    "lint": "oxlint",
-    "lint:check": "oxlint --fix && oxfmt",
-    "lint:fix": "oxlint --fix",
-    "preview": "vite preview",
-    "supabase:types:app": "npx supabase gen types typescript --project-id \"jjrdjpcjzjdjlpmiodea\" > src/lib/supabase/supabase.ts",
-    "test": "vitest run",
-    "type-check": "tsc --noEmit"
-  },
-  "type": "module"
+  }
 }

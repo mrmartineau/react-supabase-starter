@@ -11,6 +11,6 @@ export const errorResponse = ({ reason, error, status }: Params) => {
     {
       headers: API_HEADERS,
       status,
-    }
+    },
   )
 }

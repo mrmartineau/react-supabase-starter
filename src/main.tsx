@@ -1,17 +1,15 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { NuqsAdapter } from 'nuqs/adapters/react'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { ErrorBoundary } from 'react-error-boundary'
-
-// Import the generated route tree
-import { routeTree } from './routeTree.gen'
-
 import './styles.css'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider, useAuthContext } from './components/AuthProvider'
 import { Toaster } from './components/ui/sonner'
 import reportWebVitals from './reportWebVitals.ts'
+// Import the generated route tree
+import { routeTree } from './routeTree.gen'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,10 +43,7 @@ const App = () => {
   const { session: authSession } = useAuthContext()
   return (
     <NuqsAdapter>
-      <RouterProvider
-        router={router}
-        context={{ queryClient, session: authSession }}
-      />
+      <RouterProvider router={router} context={{ queryClient, session: authSession }} />
       <Toaster />
     </NuqsAdapter>
   )
