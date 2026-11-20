@@ -12,11 +12,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <button
-      className="flex items-center gap-3"
-      type="submit"
-      onClick={handleLogout}
-    >
+    <button className="flex items-center gap-3" type="submit" onClick={handleLogout}>
       <SignOutIcon aria-label="Sign out" size={18} weight="duotone" />
       {CONTENT.signOutNav}
     </button>

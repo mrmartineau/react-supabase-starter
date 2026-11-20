@@ -15,7 +15,7 @@ A modern, full-stack React starter template featuring Supabase authentication, T
 | **Styling**              | [Tailwind CSS v4](https://tailwindcss.com/)           |
 | **UI Components**        | [shadcn/ui](https://ui.shadcn.com/)                   |
 | **Validation**           | [Zod](https://zod.dev/)                               |
-| **Linting & Formatting** | [Biome](https://biomejs.dev/)                         |
+| **Linting & Formatting** | [oxlint](https://oxc.rs/docs/guide/usage/linter) + [oxfmt](https://oxc.rs/docs/guide/usage/formatter)                         |
 | **Testing**              | [Vitest](https://vitest.dev/)                         |
 
 ## Prerequisites
@@ -186,7 +186,7 @@ bunx vitest
 
 ## Linting & Formatting
 
-This project uses [Biome](https://biomejs.dev/) for linting and formatting.
+This project uses [oxlint](https://oxc.rs/docs/guide/usage/linter) + [oxfmt](https://oxc.rs/docs/guide/usage/formatter) for linting and formatting.
 
 ```bash
 # Format code
@@ -208,8 +208,8 @@ bun run lint:check
 | `bun run preview`            | Preview production build locally       |
 | `bun run deploy`             | Build and deploy to Cloudflare Workers |
 | `bun run test`               | Run tests                              |
-| `bun run format`             | Format code with Biome                 |
-| `bun run lint`               | Lint code with Biome                   |
+| `bun run format`             | Format code with oxfmt                 |
+| `bun run lint`               | Lint code with oxlint                   |
 | `bun run lint:check`         | Check and fix linting issues           |
 | `bun run lint:fix`           | Fix linting issues                     |
 | `bun run type-check`         | Run TypeScript type checking           |
